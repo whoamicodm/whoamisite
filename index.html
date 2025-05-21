@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>亗Who.Am.I?亗 Builds</title>
+<title>亗Who.Am.I?亗</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 <style>
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: linear-gradient(135deg, #0a0a0a, #1a0000);
+    background: linear-gradient(135deg,#0a0a0a,#1a0000);
     color: #ff1a1a;
     font-family: 'Segoe UI', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
   }
   header {
     position: fixed;
@@ -26,7 +23,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 15px #ff1a1a;
-    z-index: 100;
+    z-index: 20;
     user-select: none;
   }
   nav {
@@ -50,6 +47,7 @@
     color: #ff4d4d;
     outline: none;
   }
+  /* Полоска под активным пунктом */
   #slider {
     position: absolute;
     bottom: 0;
@@ -60,104 +58,127 @@
   }
 
   main {
-    flex-grow: 1;
-    padding: 80px 20px 40px;
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  /* Vertical red separator */
-  main::before {
-    content: '';
-    position: absolute;
-    top: 80px;
-    bottom: 40px;
-    left: 50%;
-    width: 3px;
-    background: #ff1a1a;
-    transform: translateX(-50%);
-    z-index: 10;
-  }
-
-  .column {
-    flex: 1;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-width: 100%;
-    padding: 0 20px;
-  }
-  .column h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 28px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-bottom: 20px;
-    color: #ff1a1a;
-    text-shadow: 0 0 15px #ff1a1a;
+    user-select: none;
   }
-  .card {
-    background: #1a0000;
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 52px;
+    color: #ff1a1a;
+    text-shadow: 0 0 20px #ff1a1a, 0 0 40px #990000;
+    animation: glow 2s ease-in-out infinite alternate, fadeIn 1.5s ease forwards;
+    margin-bottom: 20px;
+    opacity: 0;
+  }
+  @keyframes glow {
+    from { text-shadow: 0 0 20px #ff1a1a; }
+    to { text-shadow: 0 0 40px #ff4d4d; }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  p {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    color: #f2f2f2;
+    opacity: 0.85;
+    text-shadow: 0 0 7px #ff1a1aaa;
+    margin: 0 0 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #ff1a1a;
+    width: 0;
+    max-width: 90vw;
+    animation: typing 4s steps(37,end) forwards 1.5s;
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 37ch; }
+  }
+  .socials {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    /* Начальное состояние для анимации появления */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 5.7s; /* после typing (4s) + 1.5s */
+  }
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .socials .btn {
+    height: 46px;
+    line-height: 46px;
+    padding: 0 20px;
+    font-size: 16px;
+    min-width: 104px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
     border: 2px solid #ff1a1a;
-    border-radius: 12px;
-    padding: 15px 20px 40px 20px;
+    background: transparent;
+    color: #ff1a1a;
     cursor: pointer;
     user-select: none;
-    box-shadow: 0 0 12px #ff1a1a55;
-    transition: box-shadow 0.3s, transform 0.2s;
-    position: relative;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+    box-shadow: 0 0 10px transparent;
+    font-family: 'Share Tech Mono', monospace;
+    white-space: nowrap;
   }
-  .card:hover,
-  .card:focus {
-    box-shadow: 0 0 25px #ff4d4d;
-    transform: scale(1.03);
+  .socials .btn:hover,
+  .socials .btn:focus {
+    background: #ff1a1a;
+    color: #0a0a0a;
+    box-shadow: 0 0 15px #ff1a1a, 0 0 30px #ff1a1a;
+    transform: scale(1.07);
     outline: none;
   }
-  .card h3 {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #ff1a1a;
+  .socials .btn:active {
+    background: #cc0000;
+    box-shadow: 0 0 20px #cc0000;
+    transform: scale(0.95);
+    transition: transform 0.1s;
   }
-  .card ul {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 14px;
-    color: #f2f2f2;
-    list-style-type: none;
-    padding-left: 10px;
-  }
-  .card ul li {
-    margin-bottom: 6px;
-  }
-  .copy-hint {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    color: #ff4d4d;
-    user-select: none;
-  }
+  .socials a.btn.tiktok { min-width: 104px; }
+  .socials a.btn.twitch { min-width: 104px; }
+  .socials a.btn.youtube { min-width: 112px; }
+  .socials a.btn.instagram { min-width: 130px; }
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    main {
-      flex-direction: column;
-      padding: 80px 10px 40px;
+  @media (max-width: 600px) {
+    nav {
+      gap: 40px;
+      font-size: 16px;
     }
-    main::before {
-      display: none;
+    h1 {
+      font-size: 36px;
     }
-    .column {
-      max-width: 100%;
-      padding: 0;
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    .socials .btn {
+      height: 40px;
+      font-size: 14px;
+      padding: 0 14px;
+      min-width: unset;
+      white-space: normal;
     }
   }
 
-  /* Smoke Canvas */
   #smokeCanvas {
     position: fixed;
     top: 0; left: 0;
@@ -175,120 +196,23 @@
 <body>
 <header>
   <nav>
-    <a href="index.html" class="nav-link">Main</a>
-    <a href="builds.html" class="nav-link active">Builds</a>
+    <a href="index.html" class="nav-link active">Main</a>
+    <a href="builds.html" class="nav-link">Builds</a>
     <div id="slider"></div>
   </nav>
 </header>
 <main>
-  <section class="column" aria-label="Battle Royale Builds">
-    <h2>Battle Royale Builds</h2>
-
-    <div tabindex="0" class="card" data-code="AK117 - 1C6C7D8B9B">
-      <h3>AK117 - 1C6C7D8B9B</h3>
-      <ul>
-        <li>Muzzle - Monolithic Suppressor</li>
-        <li>Laser - OWC Laser - Tactical</li>
-        <li>Underbarrel - Ranger Foregrip</li>
-        <li>Ammunition - 48 Round Extended Mag</li>
-        <li>Rear Grip - Rubberized Grip Tape</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-
-    <div tabindex="0" class="card" data-code="Maddox - 2A4A5E8A9A">
-      <h3>Maddox - 2A4A5E8A9A</h3>
-      <ul>
-        <li>Barrel - Flash Guard Barrel</li>
-        <li>Perk - Disable</li>
-        <li>Rear Grip - Sturdy Grip</li>
-        <li>Ammunition - Extended Mag A</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-
-    <div tabindex="0" class="card" data-code="M13 - 2B4D6B8D9B">
-      <h3>M13 - 2B4D6B8D9B</h3>
-      <ul>
-        <li>Barrel - RTC Heavy Long Barrel</li>
-        <li>Stock - RTC Assault Tactical</li>
-        <li>Laser - MIP Laser 5mW</li>
-        <li>Ammunition - .300 RTC Double Stack 40 Round</li>
-        <li>Rear Grip - Rubberized Grip Tape</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-  </section>
-
-  <section class="column" aria-label="Multiplayer Builds">
-    <h2>Multiplayer Builds</h2>
-
-    <div tabindex="0" class="card" data-code="Maddox - 2D4A5A8D9A">
-      <h3>Maddox - 2D4A5A8D9A</h3>
-      <ul>
-        <li>Barrel - Flash Guard Barrel</li>
-        <li>Stock - YKM Combat Stock</li>
-        <li>Perk - FMJ</li>
-        <li>Rear Grip - Hollow Grip</li>
-        <li>Ammunition - Extended Mag A</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-
-    <div tabindex="0" class="card" data-code="KRM-262 - 1C2A4A5E6B">
-      <h3>KRM-262 - 1C2A4A5E6B</h3>
-      <ul>
-        <li>Muzzle - Marauder Suppressor</li>
-        <li>Barrel - RTC Light Extended Barrel</li>
-        <li>Stock - No Stock</li>
-        <li>Perk - Speed Up Kill</li>
-        <li>Laser - MIP Laser 5mW</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-
-    <div tabindex="0" class="card" data-code="USS9 - 1C2D4A8C9A">
-      <h3>USS9 - 1C2D4A8C9A</h3>
-      <ul>
-        <li>Muzzle - Monolithic Suppressor</li>
-        <li>Barrel - FSS Carbine Pro</li>
-        <li>Stock - No Stock</li>
-        <li>Ammunition - .41 AE 32-Round Mags</li>
-        <li>Rear Grip - Granulated Grip Tape</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-
-    <div tabindex="0" class="card" data-code="M13 - 2C3A4B8B9B">
-      <h3>M13 - 2C3A4B8B9B</h3>
-      <ul>
-        <li>Barrel - RTC Silencer Barrel</li>
-        <li>Optic - Classic Red Dot Sight</li>
-        <li>Stock - RTC Combat Stock</li>
-        <li>Ammunition - Large Extended Mag B</li>
-        <li>Rear Grip - Rubberized Grip Tape</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-
-    <div tabindex="0" class="card" data-code="AK117 - 1F2A4A7F8B">
-      <h3>AK117 - 1F2A4A7F8B</h3>
-      <ul>
-        <li>Muzzle - RTC Light Muzzle Brake</li>
-        <li>Barrel - MIP Light Barrel (Short)</li>
-        <li>Stock - No Stock</li>
-        <li>Underbarrel - Tactical Foregrip B</li>
-        <li>Ammunition - 48 Round Extended Mag</li>
-      </ul>
-      <div class="copy-hint">Click to copy</div>
-    </div>
-  </section>
+  <h1>亗Who.Am.I?亗</h1>
+  <p>No limits. No fear. Just headshots ;)</p>
+  <div class="socials">
+    <a class="btn tiktok" href="https://www.tiktok.com/@whoami.codm?_t=ZM-8uIA92Bw5cF&_r=1" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a class="btn twitch" href="https://www.twitch.tv/whoami_codm" target="_blank" rel="noopener noreferrer">Twitch</a>
+    <a class="btn youtube" href="https://www.youtube.com/channel/UC7ZcmBWgwNl10CkJ23L2HCQ" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a class="btn instagram" href="https://www.instagram.com/whoami.codm/?igsh=Z211YWIwbmNwbG81#" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
 </main>
-
 <canvas id="smokeCanvas"></canvas>
-
 <script>
-  // Navigation slider logic
   const nav = document.querySelector('nav');
   const slider = document.getElementById('slider');
   const links = document.querySelectorAll('.nav-link');
@@ -300,38 +224,22 @@
     slider.style.left = (rect.left - navRect.left) + 'px';
   }
 
+  // Изначально поставим под активной ссылкой
   const active = document.querySelector('.nav-link.active');
   if (active) setSlider(active);
 
   links.forEach(link => {
     link.addEventListener('click', e => {
+      // При клике меняем полоску
       setSlider(e.target);
+
+      // Убираем активный класс у всех и ставим у текущей
       links.forEach(l => l.classList.remove('active'));
       e.target.classList.add('active');
     });
   });
 
-  // Copy to clipboard on card click
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const code = card.getAttribute('data-code');
-      navigator.clipboard.writeText(code).then(() => {
-        alert(`Copied: ${code}`);
-      }).catch(() => {
-        alert('Failed to copy');
-      });
-    });
-    // Accessibility: copy on Enter key press
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        card.click();
-      }
-    });
-  });
-
-  // ---------- Smoke animation ----------
+  // ---------- Смок-анимация ----------
   const c = document.getElementById('smokeCanvas'), ctx = c.getContext('2d');
   let w, h;
   function resize() {
@@ -366,25 +274,18 @@
       g.addColorStop(1, 'rgba(255,26,26,0)');
       ctx.fillStyle = g;
       ctx.beginPath();
-      ctx.ellipse(0, 0, this.s * 0.3, this.s, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, 0, this.s * 0.6, this.s, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
   }
-
-  const particles = [];
-  for (let i = 0; i < 60; i++) particles.push(new P());
-
-  function animate() {
+  let ps = [];
+  for (let i = 0; i < 70; i++) ps.push(new P());
+  (function anim() {
     ctx.clearRect(0, 0, w, h);
-    particles.forEach(p => {
-      p.update();
-      p.draw(ctx);
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
+    for (let p of ps) { p.update(); p.draw(ctx); }
+    requestAnimationFrame(anim);
+  })();
 </script>
-
 </body>
 </html>
