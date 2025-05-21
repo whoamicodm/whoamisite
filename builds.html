@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>亗Who.Am.I?亗 Builds</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<style>
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    background: linear-gradient(135deg, #0a0a0a, #1a0000);
+    color: #ff1a1a;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background: #1a0000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px #ff1a1a;
+    z-index: 100;
+    user-select: none;
+  }
+  nav {
+    position: relative;
+    display: flex;
+    gap: 60px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    color: #ff1a1a;
+  }
+  nav a {
+    color: #ff1a1a;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s;
+  }
+  nav a:hover,
+  nav a:focus {
+    color: #ff4d4d;
+    outline: none;
+  }
+  #slider {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background: #ff1a1a;
+    border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  main {
+    flex-grow: 1;
+    padding: 80px 20px 40px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  /* Vertical red separator */
+  main::before {
+    content: '';
+    position: absolute;
+    top: 80px;
+    bottom: 40px;
+    left: 50%;
+    width: 3px;
+    background: #ff1a1a;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  .column h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff1a1a;
+    text-shadow: 0 0 15px #ff1a1a;
+  }
+  .card {
+    background: #1a0000;
+    border: 2px solid #ff1a1a;
+    border-radius: 12px;
+    padding: 15px 20px 40px 20px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 12px #ff1a1a55;
+    transition: box-shadow 0.3s, transform 0.2s;
+    position: relative;
+  }
+  .card:hover,
+  .card:focus {
+    box-shadow: 0 0 25px #ff4d4d;
+    transform: scale(1.03);
+    outline: none;
+  }
+  .card h3 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ff1a1a;
+  }
+  .card ul {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: #f2f2f2;
+    list-style-type: none;
+    padding-left: 10px;
+  }
+  .card ul li {
+    margin-bottom: 6px;
+  }
+  .copy-hint {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: #ff4d4d;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    main {
+      flex-direction: column;
+      padding: 80px 10px 40px;
+    }
+    main::before {
+      display: none;
+    }
+    .column {
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+
+  /* Smoke Canvas */
+  #smokeCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+    opacity: 0.3;
+    filter: blur(14px);
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html" class="nav-link">Main</a>
+    <a href="builds.html" class="nav-link active">Builds</a>
+    <div id="slider"></div>
+  </nav>
+</header>
+<main>
+  <section class="column" aria-label="Battle Royale Builds">
+    <h2>Battle Royale Builds</h2>
+
+    <div tabindex="0" class="card" data-code="AK117 - 1C6C7D8B9B">
+      <h3>AK117 - 1C6C7D8B9B</h3>
+      <ul>
+        <li>Muzzle - Monolithic Suppressor</li>
+        <li>Laser - OWC Laser - Tactical</li>
+        <li>Underbarrel - Ranger Foregrip</li>
+        <li>Ammunition - 48 Round Extended Mag</li>
+        <li>Rear Grip - Rubberized Grip Tape</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+
+    <div tabindex="0" class="card" data-code="Maddox - 2A4A5E8A9A">
+      <h3>Maddox - 2A4A5E8A9A</h3>
+      <ul>
+        <li>Barrel - Flash Guard Barrel</li>
+        <li>Perk - Disable</li>
+        <li>Rear Grip - Sturdy Grip</li>
+        <li>Ammunition - Extended Mag A</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+
+    <div tabindex="0" class="card" data-code="M13 - 2B4D6B8D9B">
+      <h3>M13 - 2B4D6B8D9B</h3>
+      <ul>
+        <li>Barrel - RTC Heavy Long Barrel</li>
+        <li>Stock - RTC Assault Tactical</li>
+        <li>Laser - MIP Laser 5mW</li>
+        <li>Ammunition - .300 RTC Double Stack 40 Round</li>
+        <li>Rear Grip - Rubberized Grip Tape</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+  </section>
+
+  <section class="column" aria-label="Multiplayer Builds">
+    <h2>Multiplayer Builds</h2>
+
+    <div tabindex="0" class="card" data-code="Maddox - 2D4A5A8D9A">
+      <h3>Maddox - 2D4A5A8D9A</h3>
+      <ul>
+        <li>Barrel - Flash Guard Barrel</li>
+        <li>Stock - YKM Combat Stock</li>
+        <li>Perk - FMJ</li>
+        <li>Rear Grip - Hollow Grip</li>
+        <li>Ammunition - Extended Mag A</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+
+    <div tabindex="0" class="card" data-code="KRM-262 - 1C2A4A5E6B">
+      <h3>KRM-262 - 1C2A4A5E6B</h3>
+      <ul>
+        <li>Muzzle - Marauder Suppressor</li>
+        <li>Barrel - RTC Light Extended Barrel</li>
+        <li>Stock - No Stock</li>
+        <li>Perk - Speed Up Kill</li>
+        <li>Laser - MIP Laser 5mW</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+
+    <div tabindex="0" class="card" data-code="USS9 - 1C2D4A8C9A">
+      <h3>USS9 - 1C2D4A8C9A</h3>
+      <ul>
+        <li>Muzzle - Monolithic Suppressor</li>
+        <li>Barrel - FSS Carbine Pro</li>
+        <li>Stock - No Stock</li>
+        <li>Ammunition - .41 AE 32-Round Mags</li>
+        <li>Rear Grip - Granulated Grip Tape</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+
+    <div tabindex="0" class="card" data-code="M13 - 2C3A4B8B9B">
+      <h3>M13 - 2C3A4B8B9B</h3>
+      <ul>
+        <li>Barrel - RTC Silencer Barrel</li>
+        <li>Optic - Classic Red Dot Sight</li>
+        <li>Stock - RTC Combat Stock</li>
+        <li>Ammunition - Large Extended Mag B</li>
+        <li>Rear Grip - Rubberized Grip Tape</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+
+    <div tabindex="0" class="card" data-code="AK117 - 1F2A4A7F8B">
+      <h3>AK117 - 1F2A4A7F8B</h3>
+      <ul>
+        <li>Muzzle - RTC Light Muzzle Brake</li>
+        <li>Barrel - MIP Light Barrel (Short)</li>
+        <li>Stock - No Stock</li>
+        <li>Underbarrel - Tactical Foregrip B</li>
+        <li>Ammunition - 48 Round Extended Mag</li>
+      </ul>
+      <div class="copy-hint">Click to copy</div>
+    </div>
+  </section>
+</main>
+
+<canvas id="smokeCanvas"></canvas>
+
+<script>
+  // Navigation slider logic
+  const nav = document.querySelector('nav');
+  const slider = document.getElementById('slider');
+  const links = document.querySelectorAll('.nav-link');
+
+  function setSlider(el) {
+    const rect = el.getBoundingClientRect();
+    const navRect = nav.getBoundingClientRect();
+    slider.style.width = rect.width + 'px';
+    slider.style.left = (rect.left - navRect.left) + 'px';
+  }
+
+  const active = document.querySelector('.nav-link.active');
+  if (active) setSlider(active);
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      setSlider(e.target);
+      links.forEach(l => l.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+  });
+
+  // Copy to clipboard on card click
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const code = card.getAttribute('data-code');
+      navigator.clipboard.writeText(code).then(() => {
+        alert(`Copied: ${code}`);
+      }).catch(() => {
+        alert('Failed to copy');
+      });
+    });
+    // Accessibility: copy on Enter key press
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
+  // ---------- Smoke animation ----------
+  const c = document.getElementById('smokeCanvas'), ctx = c.getContext('2d');
+  let w, h;
+  function resize() {
+    w = c.width = window.innerWidth;
+    h = c.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class P {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * w;
+      this.y = h + Math.random() * 50;
+      this.s = 20 + Math.random() * 50;
+      this.sp = 0.4 + Math.random() * 0.8;
+      this.a = 0.1 + Math.random() * 0.15;
+      this.an = Math.random() * Math.PI * 2;
+      this.anSp = 0.002 + Math.random() * 0.005;
+    }
+    update() {
+      this.y -= this.sp;
+      this.an += this.anSp;
+      if (this.y + this.s < 0) this.reset();
+    }
+    draw(ctx) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.an);
+      let g = ctx.createRadialGradient(0, 0, this.s * 0.3, 0, 0, this.s);
+      g.addColorStop(0, `rgba(255,26,26,${this.a})`);
+      g.addColorStop(1, 'rgba(255,26,26,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, this.s * 0.3, this.s, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  const particles = [];
+  for (let i = 0; i < 60; i++) particles.push(new P());
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.update();
+      p.draw(ctx);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+
+</body>
+</html>
